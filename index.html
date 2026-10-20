@@ -1,1 +1,278 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b6b43">
+  <meta name="description" content="একটাকায় নবীগঞ্জ — এক টাকা আপনার, মানবতা সবার। নবীগঞ্জের জন্য একটি মানবিক উদ্যোগের পরিচিতিমূলক ওয়েবসাইট।">
+  <title>একটাকায় নবীগঞ্জ | এক টাকা আপনার, মানবতা সবার</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #087443;
+      --green-dark: #064e35;
+      --green-soft: #e8f7ef;
+      --gold: #f5bd45;
+      --ink: #17352a;
+      --muted: #64766d;
+      --paper: #fbfdfb;
+      --white: #fff;
+      --line: #e4eee7;
+      --shadow: 0 16px 44px rgba(7, 76, 49, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Hind Siliguri", system-ui, sans-serif; color: var(--ink); background: var(--paper); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 36px)); margin: auto; }
+    .notice { background: #fff4d9; color: #704b00; text-align: center; padding: 9px 14px; font-size: 14px; font-weight: 600; }
+    header { background: rgba(255,255,255,.95); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--green-dark); font-size: 21px; line-height: 1.15; }
+    .logo { width: 46px; height: 46px; display: grid; place-items: center; background: linear-gradient(135deg, var(--green), #13a365); color: white; border-radius: 15px; font-size: 25px; box-shadow: 0 8px 20px #0874432c; }
+    .brand small { display: block; font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 4px; }
+    nav { display: flex; align-items: center; gap: 24px; font-size: 15px; font-weight: 600; }
+    nav a:hover { color: var(--green); }
+    .nav-cta, .btn { border: 0; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 19px; border-radius: 12px; font: inherit; font-weight: 700; transition: .2s ease; }
+    .nav-cta, .btn-primary { background: var(--green); color: white; box-shadow: 0 8px 20px #08744324; }
+    .nav-cta:hover, .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { color: var(--green); border: 1px solid #b8ddc8; background: white; }
+    .btn-outline:hover { background: var(--green-soft); }
+    .hero { overflow: hidden; position: relative; padding: 76px 0 70px; background: radial-gradient(circle at 82% 24%, #d4f4df 0, transparent 28%), linear-gradient(135deg, #f4fff7 0%, #fff 60%, #fff9e9 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 54px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-dark); border-radius: 999px; padding: 7px 13px; font-size: 14px; font-weight: 700; }
+    h1 { font-size: clamp(39px, 5vw, 64px); line-height: 1.13; letter-spacing: -.7px; margin: 20px 0 18px; color: var(--green-dark); }
+    h1 span { color: #d18b0d; }
+    .hero p { max-width: 600px; color: var(--muted); font-size: 18px; margin: 0 0 26px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-art { min-height: 360px; display: grid; place-items: center; position: relative; }
+    .art-circle { width: min(340px, 80vw); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(145deg, #d7f7e3, #f5ffe9); border: 1px solid #c5ead3; display: grid; place-items: center; position: relative; box-shadow: var(--shadow); }
+    .hands { font-size: 118px; filter: drop-shadow(0 12px 8px #0a5c3820); }
+    .coin { position: absolute; width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg, #ffdc7c, #e7a829); color: #6d4700; font-size: 42px; font-weight: 700; border: 7px solid #fff3c8; box-shadow: 0 12px 24px #b17b1d2c; right: 10px; top: 18px; }
+    .float-card { position: absolute; padding: 13px 16px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 14px; font-weight: 700; color: var(--green-dark); }
+    .float-card.one { left: -4px; bottom: 45px; }
+    .float-card.two { right: -8px; bottom: 86px; font-size: 14px; }
+    .section { padding: 76px 0; }
+    .section-head { max-width: 690px; margin: 0 auto 38px; text-align: center; }
+    .section-head .tag { color: var(--green); font-weight: 700; font-size: 14px; }
+    h2 { font-size: clamp(29px, 3.5vw, 42px); line-height: 1.2; margin: 9px 0 13px; color: var(--green-dark); }
+    .section-head p { color: var(--muted); margin: 0; font-size: 17px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 25px; box-shadow: 0 8px 26px #0b57300a; }
+    .card-icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; font-size: 27px; background: var(--green-soft); margin-bottom: 18px; }
+    .card h3 { font-size: 21px; margin: 0 0 8px; color: var(--green-dark); }
+    .card p { margin: 0; color: var(--muted); }
+    .about { background: #f0faf3; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 48px; }
+    .about-visual { background: linear-gradient(135deg, #087443, #0a9b61); border-radius: 28px; padding: 34px; color: white; min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow); }
+    .about-visual .big { font-size: 66px; line-height: 1; }
+    .about-visual h3 { font-size: 28px; margin: 15px 0 5px; }
+    .about-visual p { margin: 0; color: #dcf9e7; }
+    .about-copy p { color: var(--muted); font-size: 17px; }
+    .checks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+    .checks li { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; }
+    .checks span { color: var(--green); font-size: 20px; line-height: 1.2; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+    .step { border: 1px solid var(--line); border-radius: 18px; padding: 23px; background: white; }
+    .step-number { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: #694500; font-weight: 700; font-size: 19px; margin-bottom: 15px; }
+    .step h3 { margin: 0 0 8px; color: var(--green-dark); font-size: 20px; }
+    .step p { margin: 0; color: var(--muted); }
+    .transparency { background: #fff8e7; }
+    .transparency-box { max-width: 850px; margin: auto; display: flex; gap: 18px; padding: 25px; background: white; border: 1px solid #f0dfb5; border-radius: 18px; }
+    .transparency-box .symbol { font-size: 32px; }
+    .transparency-box h3 { margin: 0 0 7px; color: #795200; }
+    .transparency-box p { margin: 0; color: #75684d; }
+    .contact-card { max-width: 760px; margin: auto; padding: 34px; border-radius: 24px; background: linear-gradient(135deg, #064e35, #087443); color: white; text-align: center; }
+    .contact-card h2 { color: white; }
+    .contact-card p { color: #d7f2e1; font-size: 17px; }
+    .contact-card .btn { background: white; color: var(--green-dark); margin-top: 10px; }
+    footer { padding: 28px 0; border-top: 1px solid var(--line); background: white; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .footer-inner strong { color: var(--green-dark); }
+    .top { position: fixed; bottom: 18px; right: 18px; width: 45px; height: 45px; border: 0; border-radius: 50%; background: var(--green); color: white; font-size: 21px; cursor: pointer; box-shadow: var(--shadow); display: none; }
+    .top.show { display: block; }
+    @media (max-width: 820px) {
+      nav { gap: 13px; } nav a:not(.nav-cta) { display: none; }
+      .hero { padding: 52px 0 45px; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero-art { min-height: 300px; order: -1; }
+      .art-circle { width: 270px; } .hands { font-size: 90px; }
+      .float-card.one { left: 3%; bottom: 28px; } .float-card.two { right: 2%; bottom: 56px; }
+      .cards, .steps { grid-template-columns: 1fr; }
+      .section { padding: 55px 0; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: min(100% - 26px, 1120px); }
+      .brand { font-size: 18px; } .logo { width: 40px; height: 40px; }
+      .nav-cta { padding: 9px 12px; font-size: 14px; }
+      .hero p { font-size: 16px; }
+      .about-visual { padding: 25px; }
+      .contact-card { padding: 25px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice">ℹ️ পরিচিতিমূলক ওয়েবসাইট — বর্তমানে কোনো বাস্তব অনুদান সংগ্রহ চালু নেই।</div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="একটাকায় নবীগঞ্জ হোম">
+        <span class="logo">🤝</span>
+        <span>একটাকায় নবীগঞ্জ<small>এক টাকা আপনার, মানবতা সবার</small></span>
+      </a>
+      <nav aria-label="প্রধান মেনু">
+        <a href="#about">আমাদের সম্পর্কে</a>
+        <a href="#work">আমাদের লক্ষ্য</a>
+        <a href="#how">কীভাবে এগোব</a>
+        <a class="nav-cta" href="#contact">যোগাযোগ করুন ↗</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">🌱 ছোট উদ্যোগ • বড় স্বপ্ন</div>
+          <h1>এক টাকা আপনার,<br><span>মানবতা সবার।</span></h1>
+          <p>নবীগঞ্জের মানুষের পাশে দাঁড়ানোর একটি মানবিক স্বপ্ন। সামান্য সহযোগিতা, সম্মিলিত সদিচ্ছা আর স্বচ্ছতার মাধ্যমে আমরা গড়ে তুলতে চাই আরও সহমর্মী সমাজ।</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#about">আমাদের উদ্যোগ জানুন <span>→</span></a>
+            <a class="btn btn-outline" href="#transparency">স্বচ্ছতার নীতি</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="সহযোগিতার প্রতীকী চিত্র">
+          <div class="art-circle">
+            <div class="hands">🤲</div>
+            <div class="coin">৳</div>
+          </div>
+          <div class="float-card one">💚 মানুষের পাশে মানুষ</div>
+          <div class="float-card two">✨ নবীগঞ্জের জন্য</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="tag">আমাদের লক্ষ্য</div>
+          <h2>মানবিক নবীগঞ্জ গড়ার স্বপ্ন</h2>
+          <p>এখন আমরা ধারণা, পরিকল্পনা ও মানুষের মতামতকে গুরুত্ব দিচ্ছি। ভবিষ্যতের যেকোনো কার্যক্রম হবে দায়িত্বশীল ও স্বচ্ছ পদ্ধতিতে।</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🫶</div>
+            <h3>মানবিক সহযোগিতা</h3>
+            <p>বিপদে থাকা মানুষের পাশে দাঁড়ানোর মতো উদ্যোগ নিয়ে ভাবনা ও আলোচনা করা।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🏘️</div>
+            <h3>স্থানীয় সংযোগ</h3>
+            <p>নবীগঞ্জের মানুষ, স্বেচ্ছাসেবক ও শুভাকাঙ্ক্ষীদের মধ্যে ইতিবাচক যোগাযোগ তৈরি করা।</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🔎</div>
+            <h3>স্বচ্ছতা ও জবাবদিহি</h3>
+            <p>পরিকল্পনা, সিদ্ধান্ত ও ভবিষ্যতের কাজ সম্পর্কে পরিষ্কার তথ্য প্রকাশকে অগ্রাধিকার দেওয়া।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual">
+          <div class="big">🌿</div>
+          <div>
+            <h3>একসঙ্গে বদলানোর স্বপ্ন</h3>
+            <p>একটি ছোট ভাবনা থেকেই বড় সামাজিক পরিবর্তনের শুরু হতে পারে।</p>
+          </div>
+        </div>
+        <div class="about-copy">
+          <div class="tag" style="color:var(--green);font-weight:700">আমাদের সম্পর্কে</div>
+          <h2>একটি ভাবনা, সবার জন্য</h2>
+          <p>“একটাকায় নবীগঞ্জ” একটি প্রস্তাবিত মানবিক উদ্যোগের নাম। এর মূল ভাবনা হলো—মানুষ যেন মানুষের পাশে দাঁড়াতে উৎসাহিত হয় এবং স্থানীয়ভাবে ভালো কাজের সংস্কৃতি গড়ে ওঠে।</p>
+          <p>এই ওয়েবসাইটটি আপাতত উদ্যোগটির পরিচিতি ও পরিকল্পনা জানানোর জন্য। এটি কোনো নিবন্ধিত সংস্থা বা চালু তহবিলের দাবি করছে না।</p>
+          <ul class="checks">
+            <li><span>✓</span> মানুষের মর্যাদা ও সম্মানকে অগ্রাধিকার</li>
+            <li><span>✓</span> স্বচ্ছতা, সততা ও দায়িত্বশীলতার প্রতিশ্রুতি</li>
+            <li><span>✓</span> স্থানীয় মানুষের মতামতকে গুরুত্ব দেওয়া</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="tag">আগামীর পরিকল্পনা</div>
+          <h2>দায়িত্বশীলভাবে এগোনোর ধাপ</h2>
+          <p>যেকোনো বাস্তব কার্যক্রম শুরুর আগে প্রয়োজনীয় প্রস্তুতি ও যাচাই সম্পন্ন করা জরুরি।</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">১</div>
+            <h3>মতামত ও প্রয়োজন বোঝা</h3>
+            <p>স্থানীয় মানুষের পরামর্শ, বাস্তব প্রয়োজন এবং সম্ভাব্য কাজের ক্ষেত্র চিহ্নিত করা।</p>
+          </article>
+          <article class="step">
+            <div class="step-number">২</div>
+            <h3>নীতি ও নিয়ম তৈরি</h3>
+            <p>দায়িত্ব, হিসাব, অনুমোদন এবং প্রয়োজনীয় আইনগত বিষয়গুলো পরিষ্কার করা।</p>
+          </article>
+          <article class="step">
+            <div class="step-number">৩</div>
+            <h3>তারপর কার্যক্রমের সিদ্ধান্ত</h3>
+            <p>যথাযথ প্রস্তুতি ও স্বচ্ছ ব্যবস্থা নিশ্চিত হলেই ভবিষ্যৎ পদক্ষেপ ঘোষণা করা।</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section transparency" id="transparency">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="tag">গুরুত্বপূর্ণ ঘোষণা</div>
+          <h2>স্বচ্ছতাই আমাদের প্রথম অঙ্গীকার</h2>
+          <p>মানুষের বিশ্বাস অর্জনের জন্য তথ্য পরিষ্কার রাখা জরুরি।</p>
+        </div>
+        <div class="transparency-box">
+          <div class="symbol">🔔</div>
+          <div>
+            <h3>এখনো কোনো অনুদান বা অর্থ সংগ্রহ চালু নেই</h3>
+            <p>এই ওয়েবসাইটে কোনো পেমেন্ট, বিকাশ/নগদ নম্বর, ব্যাংক হিসাব বা অনুদান গ্রহণের ব্যবস্থা নেই। কোনো ব্যক্তি বা মাধ্যমকে এই উদ্যোগের নামে টাকা পাঠাবেন না। ভবিষ্যতে কোনো কার্যক্রম শুরু হলে তার আগে যাচাইযোগ্য তথ্য ও আনুষ্ঠানিক ঘোষণা প্রকাশ করা হবে।</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div style="font-size:42px">💬</div>
+          <h2>আপনার মতামত আমাদের কাছে মূল্যবান</h2>
+          <p>এই উদ্যোগের ভাবনা নিয়ে আলোচনা করতে পারেন। এখানে এখনো কোনো যোগাযোগ ফর্ম বা অর্থ সংগ্রহের ব্যবস্থা সক্রিয় করা হয়নি।</p>
+          <a class="btn" href="#home">শুরুতে ফিরে যান ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>একটাকায় নবীগঞ্জ</strong><br>এক টাকা আপনার, মানবতা সবার।</div>
+      <div>© <span id="year">2026</span> একটাকায় নবীগঞ্জ · পরিচিতিমূলক ওয়েবসাইট</div>
+    </div>
+  </footer>
+  <button class="top" id="topBtn" aria-label="উপরে যান" title="উপরে যান">↑</button>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const topBtn = document.getElementById("topBtn");
+    window.addEventListener("scroll", () => {
+      topBtn.classList.toggle("show", window.scrollY > 450);
+    });
+    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+</body>
+</html>
