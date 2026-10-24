@@ -35,8 +35,9 @@
     header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(220,235,224,.8); }
     .nav { min-height: 78px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .brand { display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand-mark { width:48px; height:48px; border-radius:16px; display:grid; place-items:center; flex-shrink:0; color:#fff; background:linear-gradient(140deg,#0b8c50,#075c38); box-shadow:0 8px 18px #08744330; }
-    .brand-mark svg { width:30px; height:30px; }
+    .brand-logo { width:58px; height:58px; object-fit:contain; border-radius:50%; flex-shrink:0; filter:drop-shadow(0 5px 10px #08744318); }
+    .hero-logo { display:block; width:min(100%, 440px); height:auto; border-radius:50%; filter:drop-shadow(0 22px 38px rgba(7,91,55,.13)); animation:logoFloat 6s ease-in-out infinite; }
+    @keyframes logoFloat { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-9px) rotate(1deg); } }
     .brand-name { font-size:20px; font-weight:700; line-height:1.2; color:var(--green-dark); }
     .brand-sub { display:block; font:600 10px Inter,sans-serif; letter-spacing:1.4px; color:#75847a; margin-top:5px; }
     .nav-links { display:flex; align-items:center; gap:25px; font-size:15px; font-weight:600; }
@@ -161,7 +162,7 @@
       .topbar-inner { justify-content:center;text-align:center; }
       .topbar .top-extra { display:none; }
       .nav { min-height:70px;gap:10px; }
-      .brand-mark { width:43px;height:43px;border-radius:14px; }
+      .brand-logo { width:46px;height:46px; }
       .brand-name { font-size:17px; }
       .brand-sub { font-size:9px;letter-spacing:1px; }
       .menu-toggle { display:block;flex-shrink:0; }
@@ -207,10 +208,8 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home" aria-label="একটাকায় নবীগঞ্জ হোম">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none"><path d="M24 39S7 29 7 17.5C7 8 19 5 24 14c5-9 17-6 17 3.5C41 29 24 39 24 39Z" fill="#D5F5B2"/><path d="M15 23h7l3-7 4 15 3-8h4" stroke="#087443" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span><span class="brand-name">একটাকায় নবীগঞ্জ</span><span class="brand-sub">UNITED NABIGANJ INITIATIVE</span></span>
+        <img class="brand-logo" src="ektakay-nabiganj-logo.png" alt="একটাকায় নবীগঞ্জ — Ektakay Nabiganj লোগো">
+        <span><span class="brand-name">একটাকায় নবীগঞ্জ</span><span class="brand-sub">EKTAKAY NABIGANJ</span></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="প্রধান মেনু">
         <a href="#home">হোম</a>
@@ -240,10 +239,8 @@
             <span>স্বচ্ছতা, মানবতা ও সম্মিলিত উদ্যোগ—আমাদের অঙ্গীকার</span>
           </div>
         </div>
-        <div class="hero-art" aria-label="এক টাকা ও মানবতার প্রতীকী নকশা">
-          <div class="art-orbit">
-            <div class="art-center"><div class="art-center-inner"><div class="art-one">১</div><div class="art-taka">একটাকায় নবীগঞ্জ</div><div class="art-tagline">এক টাকা আপনার, মানবতা সবার</div></div></div>
-          </div>
+        <div class="hero-art" aria-label="একটাকায় নবীগঞ্জের বাংলা ও ইংরেজি লোগো">
+          <img class="hero-logo" src="ektakay-nabiganj-logo.png" alt="একটাকায় নবীগঞ্জ | Ektakay Nabiganj — এক টাকা আপনার, মানবতা সবার।">
           <div class="float-card one"><span class="float-icon">🤝</span><span><b>একসাথে এগিয়ে চলি</b><small>ঐক্য • সহমর্মিতা</small></span></div>
           <div class="float-card two"><span class="float-icon">💚</span><span><b>মানবতার জন্য</b><small>একটি সুন্দর স্বপ্ন</small></span></div>
         </div>
@@ -311,7 +308,7 @@
       <div class="container">
         <div class="cta-box reveal">
           <div><h2>একটি সুন্দর নবীগঞ্জের স্বপ্ন</h2><p>মানবতা, ঐক্য ও দায়িত্বশীলতার পথে একসাথে এগিয়ে চলি।</p></div>
-          <a class="btn" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">United Nabiganj খুঁজুন <span>↗</span></a>
+          <a class="btn" href="https://www.facebook.com/share/1A81jGyr42/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">একটাকায় নবীগঞ্জ Facebook পেজ <span>↗</span></a>
         </div>
       </div>
     </section>
@@ -321,9 +318,9 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">💚 একটাকায় নবীগঞ্জ</div>
+          <div class="footer-brand"><img src="ektakay-nabiganj-logo.png" alt="Ektakay Nabiganj logo" style="width:76px;height:76px;object-fit:contain;vertical-align:middle;margin-right:10px;border-radius:50%;">একটাকায় নবীগঞ্জ <span style="display:block;font:600 12px Inter,sans-serif;letter-spacing:1px;margin-top:5px;color:#b7d0bf;">Ektakay Nabiganj</span></div>
           <p>United Nabiganj-এর অধীনে পরিকল্পিত মানবিক উদ্যোগের ধারণা। ছোট অবদান, বড় মানবতা—স্বচ্ছতা ও দায়িত্বশীলতার সাথে।</p>
-          <div class="socials"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a><a href="#contact" aria-label="যোগাযোগ">✉</a></div>
+          <div class="socials"><a href="https://www.facebook.com/share/1A81jGyr42/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="একটাকায় নবীগঞ্জ Facebook পেজ">f</a><a href="#contact" aria-label="যোগাযোগ">✉</a></div><p><a class="btn btn-outline" style="margin-top:14px" href="https://www.facebook.com/share/1A81jGyr42/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">📘 আমাদের Facebook পেজে যুক্ত হোন ↗</a></p>
         </div>
         <div><h4>দ্রুত লিংক</h4><ul><li><a href="#home">হোম</a></li><li><a href="#about">আমাদের সম্পর্কে</a></li><li><a href="#mission">লক্ষ্য ও কাজ</a></li><li><a href="#how">পরবর্তী ধাপ</a></li></ul></div>
         <div><h4>স্বচ্ছতার ঘোষণা</h4><p>প্রকল্পটি পরিকল্পনা পর্যায়ে রয়েছে। কোনো বাস্তব অনুদান সংগ্রহ, অনলাইন পেমেন্ট বা সহায়তা আবেদন বর্তমানে চালু নেই।</p></div>
