@@ -195,6 +195,64 @@
       *,*::before,*::after { animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important; }
       .reveal { opacity:1;transform:none; }
     }
+
+    /* Animated impact section under our goals */
+    .impact-motion { position:relative; overflow:hidden; isolation:isolate; padding:76px 0 84px; background:linear-gradient(135deg,#063e28 0%,#087443 54%,#1d9658 100%); color:#fff; }
+    .impact-motion:before,.impact-motion:after { content:""; position:absolute; border:1px solid rgba(255,255,255,.16); border-radius:50%; width:360px; height:360px; z-index:-1; animation:orbitPulse 9s ease-in-out infinite; }
+    .impact-motion:before { top:-190px; left:-90px; } .impact-motion:after { bottom:-230px; right:-70px; width:470px;height:470px; animation-delay:-4s; }
+    @keyframes orbitPulse { 0%,100%{transform:scale(.92) rotate(0deg);opacity:.35} 50%{transform:scale(1.08) rotate(12deg);opacity:.8} }
+    .impact-head { text-align:center; max-width:760px; margin:0 auto 34px; }
+    .impact-kicker { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border:1px solid #ffffff48; border-radius:99px; color:#e6ffb9; font-size:14px; }
+    .impact-head h2 { font-size:clamp(28px,4vw,43px); line-height:1.2; margin:16px 0 12px; }
+    .impact-head p { color:#e0f4e7; margin:0; }
+    .impact-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .impact-item { position:relative; min-height:220px; padding:28px 24px; border:1px solid #ffffff30; border-radius:24px; background:linear-gradient(145deg,#ffffff1c,#ffffff09); box-shadow:0 20px 55px #003c251c; backdrop-filter:blur(8px); transform:translateY(0); transition:transform .35s,background .35s,border-color .35s; }
+    .impact-item:hover { transform:translateY(-9px); background:#ffffff25; border-color:#ffffff70; }
+    .impact-icon { width:64px;height:64px; display:grid;place-items:center; border-radius:20px; background:#ffffff20; font-size:32px; margin-bottom:18px; animation:iconBob 3.4s ease-in-out infinite; }
+    .impact-item:nth-child(2) .impact-icon{animation-delay:-1.1s}.impact-item:nth-child(3) .impact-icon{animation-delay:-2.2s}
+    @keyframes iconBob { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-7px) rotate(3deg)} }
+    .impact-item h3 { font-size:22px; margin:0 0 8px; color:#fff; }
+    .impact-item p { margin:0; color:#e2f4e8; font-size:15px; }
+    .impact-note { text-align:center; margin:28px auto 0; color:#d9f4e2; font-size:14px; }
+    .impact-note span { display:inline-block; animation:heartBeat 1.8s ease-in-out infinite; color:#ffb5b5; }
+    @keyframes heartBeat { 0%,100%{transform:scale(1)} 12%{transform:scale(1.18)} 24%{transform:scale(1)} 36%{transform:scale(1.12)} }
+    @media(max-width:760px){.impact-motion{padding:58px 0}.impact-track{grid-template-columns:1fr;gap:14px}.impact-item{min-height:0;padding:23px}.impact-icon{width:56px;height:56px;font-size:28px;margin-bottom:12px}}
+    @media(prefers-reduced-motion:reduce){.impact-motion:before,.impact-motion:after,.impact-icon,.impact-note span{animation:none!important}.impact-item{transition:none}}
+
+
+    /* Theme, language and donation interface */
+    body.dark-mode{--ink:#e7f2ea;--muted:#b3c4b8;--paper:#101a14;--white:#17251d;--line:#2a4032;--green-light:#203c2c;--shadow:0 18px 50px rgba(0,0,0,.28);background:var(--paper);color:var(--ink)}
+    body.dark-mode header{background:rgba(16,26,20,.94);border-bottom-color:#2a4032}
+    body.dark-mode .section-soft{background:#142219} body.dark-mode .feature-card,body.dark-mode .step,body.dark-mode .notice{background:#17251d;color:var(--ink);border-color:#2a4032}
+    body.dark-mode .brand-name,body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4{color:inherit}
+    body.dark-mode .nav-links a,body.dark-mode .brand-sub{color:#d3e5d8}
+    body.dark-mode .topbar{background:#061f14}
+    .utility-btn{border:1px solid var(--line);background:var(--white);color:var(--ink);padding:9px 12px;border-radius:999px;font-weight:700;cursor:pointer;transition:.2s}
+    .utility-btn:hover{transform:translateY(-2px);border-color:var(--green)}
+    .nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .donate-section{padding:78px 0;background:linear-gradient(135deg,#eaf9ef,#fff9e5 55%,#e7f7ef);position:relative;overflow:hidden}
+    body.dark-mode .donate-section{background:linear-gradient(135deg,#14291d,#242316 55%,#13261c)}
+    .donate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:30px}
+    .donate-card{background:var(--white);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+    .donate-card:hover{transform:translateY(-7px);border-color:#77c79a}
+    .donate-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:#b8e98635;right:-45px;top:-55px}
+    .donate-card .donate-icon{font-size:42px;position:relative}
+    .donate-card h3{font-size:24px;margin:10px 0 8px;color:var(--green-dark)}
+    body.dark-mode .donate-card h3{color:#b8e986}
+    .donate-card p{color:var(--muted);margin:0 0 18px}
+    .coming-soon{display:inline-block;background:#fff1c7;color:#74520a;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;margin-bottom:14px}
+    body.dark-mode .coming-soon{background:#4b3c16;color:#ffe49b}
+    .donate-disclaimer{margin:22px auto 0;max-width:850px;text-align:center;padding:16px 18px;border:1px dashed #d2a94c;border-radius:16px;background:#fffdf4;color:#6c551b}
+    body.dark-mode .donate-disclaimer{background:#292516;color:#ffe7a5;border-color:#7e6a2c}
+    .modal-backdrop{position:fixed;inset:0;background:#07180fd9;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-backdrop.open{display:flex;animation:fadeIn .2s ease}
+    .donate-modal{width:min(540px,100%);background:var(--white);color:var(--ink);border-radius:24px;padding:28px;box-shadow:0 30px 100px #0005;position:relative;animation:modalUp .3s ease}
+    .modal-close{position:absolute;right:16px;top:12px;border:0;background:transparent;color:var(--ink);font-size:28px;cursor:pointer}
+    .donate-modal h3{font-size:25px;margin:0 30px 10px 0;color:var(--green)}
+    .donate-modal p{color:var(--muted)}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}} @keyframes modalUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:760px){.nav-actions{gap:6px}.utility-btn{padding:7px 9px;font-size:13px}.nav-actions .btn{display:none}.donate-grid{grid-template-columns:1fr}.donate-section{padding:58px 0}.donate-card{padding:23px}}
+
   </style>
 </head>
 <body>
@@ -218,7 +276,11 @@
         <a href="#how">কীভাবে কাজ করবে</a>
         <a href="#contact">যোগাযোগ</a>
       </nav>
-      <div class="nav-actions"><a class="btn btn-primary" href="#mission">প্রকল্প জানুন <span>↗</span></a></div>
+      <div class="nav-actions">
+        <button class="utility-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
+        <button class="utility-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        <a class="btn btn-primary" href="#donate" data-bn="অনুদান" data-en="Donate">অনুদান <span>♡</span></a>
+      </div>
       <button class="menu-toggle" id="menuToggle" aria-label="মেনু খুলুন" aria-expanded="false">☰</button>
     </div>
   </header>
@@ -289,6 +351,22 @@
       </div>
     </section>
 
+    <section class="impact-motion" aria-label="আমাদের লক্ষ্যকে এগিয়ে নেওয়ার অনুপ্রেরণা">
+      <div class="container">
+        <div class="impact-head reveal">
+          <span class="impact-kicker">✦ একসাথে বদলানোর স্বপ্ন</span>
+          <h2>ছোট উদ্যোগ, বড় মানবিক স্বপ্ন</h2>
+          <p>নবীগঞ্জের মানুষের জন্য সহমর্মিতা, স্বচ্ছতা ও ঐক্যকে সঙ্গে নিয়ে ধাপে ধাপে এগিয়ে যাওয়ার প্রত্যয়।</p>
+        </div>
+        <div class="impact-track">
+          <article class="impact-item reveal"><div class="impact-icon" aria-hidden="true">🤝</div><h3>মানুষ মানুষের জন্য</h3><p>প্রয়োজনের সময়ে মানুষের পাশে দাঁড়ানোর মানসিকতা ও পারস্পরিক সহযোগিতা গড়ে তোলা।</p></article>
+          <article class="impact-item reveal delay-1"><div class="impact-icon" aria-hidden="true">🌱</div><h3>আশার আলো ছড়ানো</h3><p>পরিকল্পনা, নিয়মনীতি ও প্রয়োজনীয় অনুমোদন নিশ্চিত করে টেকসই মানবিক উদ্যোগের প্রস্তুতি নেওয়া।</p></article>
+          <article class="impact-item reveal delay-2"><div class="impact-icon" aria-hidden="true">💚</div><h3>স্বচ্ছতায় আস্থা</h3><p>দায়িত্বশীল ব্যবস্থাপনা, পরিষ্কার হিসাব এবং সবার কাছে জবাবদিহিকে অগ্রাধিকার দেওয়া।</p></article>
+        </div>
+        <p class="impact-note"><span>♥</span> এক টাকা আপনার, মানবতা সবার। <span>♥</span><br>বর্তমানে প্রকল্পটি পরিকল্পনা পর্যায়ে রয়েছে; বাস্তব অনুদান সংগ্রহ এখনো শুরু হয়নি।</p>
+      </div>
+    </section>
+
     <section class="section" id="how">
       <div class="container">
         <div class="section-head reveal">
@@ -301,6 +379,31 @@
           <article class="step reveal delay-1"><h3>অনুমোদন ও ব্যবস্থাপনা</h3><p>প্রযোজ্য নিবন্ধন/অনুমোদনের প্রয়োজন যাচাই এবং দায়িত্বশীল পরিচালনা ও হিসাবরক্ষার ব্যবস্থা করা।</p></article>
           <article class="step reveal delay-2"><h3>স্বচ্ছভাবে কার্যক্রম</h3><p>সব প্রস্তুতি সম্পন্ন ও প্রয়োজনীয় অনুমোদন পাওয়ার পরই কার্যক্রম, প্রতিবেদন ও অর্থসংক্রান্ত তথ্য প্রকাশ করা।</p></article>
         </div>
+      </div>
+    </section>
+
+    <section class="donate-section" id="donate">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center;max-width:760px;margin:0 auto">
+          <div class="section-kicker" data-bn="সহযোগিতার পরিকল্পনা" data-en="Ways to contribute">সহযোগিতার পরিকল্পনা</div>
+          <h2 data-bn="বাংলাদেশ থেকে, প্রবাস থেকেও—একসাথে" data-en="Together, from Bangladesh and abroad">বাংলাদেশ থেকে, প্রবাস থেকেও—একসাথে</h2>
+          <p data-bn="নবীগঞ্জের স্থানীয় মানুষ ও প্রবাসীদের অংশগ্রহণের কথা মাথায় রেখে ভবিষ্যতের জন্য দুটি আলাদা অনুদান-পথ পরিকল্পনায় রাখা হয়েছে।" data-en="Two future contribution routes are planned for people in Nabiganj and members of the diaspora.">নবীগঞ্জের স্থানীয় মানুষ ও প্রবাসীদের অংশগ্রহণের কথা মাথায় রেখে ভবিষ্যতের জন্য দুটি আলাদা অনুদান-পথ পরিকল্পনায় রাখা হয়েছে।</p>
+        </div>
+        <div class="donate-grid">
+          <article class="donate-card reveal">
+            <div class="donate-icon">🇧🇩</div><span class="coming-soon" data-bn="এখনো চালু হয়নি" data-en="Not active yet">এখনো চালু হয়নি</span>
+            <h3 data-bn="বাংলাদেশ থেকে অনুদান" data-en="Donate from Bangladesh">বাংলাদেশ থেকে অনুদান</h3>
+            <p data-bn="ভবিষ্যতে যাচাইকৃত মোবাইল ব্যাংকিং বা ব্যাংক হিসাবের তথ্য প্রকাশ করা হবে। এখন কোনো টাকা পাঠাবেন না।" data-en="Verified mobile banking or bank details may be published in the future. Please do not send money now.">ভবিষ্যতে যাচাইকৃত মোবাইল ব্যাংকিং বা ব্যাংক হিসাবের তথ্য প্রকাশ করা হবে। এখন কোনো টাকা পাঠাবেন না।</p>
+            <button class="btn btn-primary donate-info" type="button" data-route="local" data-bn="বিস্তারিত জানুন" data-en="Learn more">বিস্তারিত জানুন ↗</button>
+          </article>
+          <article class="donate-card reveal delay-1">
+            <div class="donate-icon">🌍</div><span class="coming-soon" data-bn="এখনো চালু হয়নি" data-en="Not active yet">এখনো চালু হয়নি</span>
+            <h3 data-bn="প্রবাস থেকে অনুদান" data-en="Donate from abroad">প্রবাস থেকে অনুদান</h3>
+            <p data-bn="প্রবাসীদের জন্য ভবিষ্যতে বৈধ আন্তর্জাতিক ব্যাংক ট্রান্সফার/অনুমোদিত পেমেন্ট পদ্ধতি যাচাই করে জানানো হবে।" data-en="For overseas supporters, lawful international bank transfer or approved payment options will be verified before launch.">প্রবাসীদের জন্য ভবিষ্যতে বৈধ আন্তর্জাতিক ব্যাংক ট্রান্সফার/অনুমোদিত পেমেন্ট পদ্ধতি যাচাই করে জানানো হবে।</p>
+            <button class="btn btn-primary donate-info" type="button" data-route="abroad" data-bn="প্রবাসীদের তথ্য" data-en="Diaspora details">প্রবাসীদের তথ্য ↗</button>
+          </article>
+        </div>
+        <div class="donate-disclaimer"><strong data-bn="গুরুত্বপূর্ণ ঘোষণা" data-en="Important notice">গুরুত্বপূর্ণ ঘোষণা</strong><br><span data-bn="একটাকায় নবীগঞ্জ বর্তমানে পরিকল্পনা পর্যায়ে রয়েছে। অনুদান সংগ্রহ বা পেমেন্ট এখনো চালু হয়নি। কোনো ব্যক্তি বা অ্যাকাউন্টে টাকা পাঠাবেন না। প্রয়োজনীয় অনুমোদন, নীতিমালা ও স্বচ্ছ হিসাবব্যবস্থা প্রস্তুত হলে এই ওয়েবসাইটে আনুষ্ঠানিক ঘোষণা দেওয়া হবে।" data-en="Ektakay Nabiganj is still in the planning stage. Donations and payments are not active. Do not send money to any person or account. Official instructions will be published here only after required approvals, policies and transparent accounting arrangements are in place.">একটাকায় নবীগঞ্জ বর্তমানে পরিকল্পনা পর্যায়ে রয়েছে। অনুদান সংগ্রহ বা পেমেন্ট এখনো চালু হয়নি। কোনো ব্যক্তি বা অ্যাকাউন্টে টাকা পাঠাবেন না। প্রয়োজনীয় অনুমোদন, নীতিমালা ও স্বচ্ছ হিসাবব্যবস্থা প্রস্তুত হলে এই ওয়েবসাইটে আনুষ্ঠানিক ঘোষণা দেওয়া হবে।</span></div>
       </div>
     </section>
 
@@ -329,6 +432,15 @@
     </div>
   </footer>
 
+  <div class="modal-backdrop" id="donateModal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+    <div class="donate-modal">
+      <button class="modal-close" id="closeDonateModal" aria-label="Close">×</button>
+      <h3 id="donateModalTitle">অনুদান এখনো চালু হয়নি</h3>
+      <p id="donateModalText">প্রকল্পটি পরিকল্পনা পর্যায়ে রয়েছে। যাচাইকৃত হিসাব, প্রয়োজনীয় অনুমোদন এবং স্বচ্ছ অর্থব্যবস্থা তৈরি না হওয়া পর্যন্ত কোনো অনুদান গ্রহণ করা হচ্ছে না। অনুগ্রহ করে এখন টাকা পাঠাবেন না।</p>
+      <p><strong>এক টাকা আপনার, মানবতা সবার।</strong></p>
+      <button class="btn btn-primary" id="modalOkay" type="button">বুঝেছি</button>
+    </div>
+  </div>
   <button class="back-top" id="backTop" aria-label="উপরে ফিরে যান">↑</button>
   <script>
     const menuToggle = document.getElementById('menuToggle');
@@ -365,6 +477,46 @@
       backTop.classList.toggle('show', window.scrollY > 500);
     }, { passive: true });
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('ektakay-theme') === 'dark') document.body.classList.add('dark-mode');
+    const paintThemeButton = () => { themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙'; themeToggle.setAttribute('aria-label', document.body.classList.contains('dark-mode') ? 'Light mode' : 'Dark mode'); };
+    paintThemeButton();
+    themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); localStorage.setItem('ektakay-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light'); paintThemeButton(); });
+
+    // Bengali/English language switch for marked website content
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = 'bn';
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'bn' ? 'en' : 'bn';
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll('[data-bn][data-en]').forEach(el => {
+        const value = el.dataset[currentLang];
+        if (value !== undefined) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = value;
+          else if (el.querySelector('span')) { const span = el.querySelector('span'); el.childNodes[0].textContent = value + ' '; }
+          else el.textContent = value;
+        }
+      });
+      langToggle.textContent = currentLang === 'bn' ? 'EN' : 'বাংলা';
+      document.querySelectorAll('.nav-links a').forEach((el,i) => { const bn=['হোম','আমাদের সম্পর্কে','লক্ষ্য ও কাজ','কীভাবে কাজ করবে','যোগাযোগ']; const en=['Home','About','Mission','How it works','Contact']; el.textContent=(currentLang==='bn'?bn:en)[i] || el.textContent; });
+    });
+
+    // Donation buttons open a clear, no-payment-yet notice
+    const donateModal = document.getElementById('donateModal');
+    const closeDonate = () => donateModal.classList.remove('open');
+    document.querySelectorAll('.donate-info').forEach(btn => btn.addEventListener('click', () => {
+      const abroad = btn.dataset.route === 'abroad';
+      document.getElementById('donateModalTitle').textContent = currentLang === 'en' ? (abroad ? 'Overseas donations are not active yet' : 'Local donations are not active yet') : (abroad ? 'প্রবাস থেকে অনুদান এখনো চালু হয়নি' : 'বাংলাদেশ থেকে অনুদান এখনো চালু হয়নি');
+      document.getElementById('donateModalText').textContent = currentLang === 'en' ? 'The project is still being prepared. No payment details are published and no donations are being accepted. Please do not transfer money. Official, verified instructions will appear here only after required approvals and safeguards are ready.' : 'প্রকল্পটি এখনো প্রস্তুতি পর্যায়ে। কোনো পেমেন্টের তথ্য প্রকাশ করা হয়নি এবং অনুদান গ্রহণ করা হচ্ছে না। অনুগ্রহ করে টাকা পাঠাবেন না। প্রয়োজনীয় অনুমোদন ও সুরক্ষাব্যবস্থা প্রস্তুত হলে এখানেই যাচাইকৃত নির্দেশনা প্রকাশ করা হবে।';
+      donateModal.classList.add('open');
+    }));
+    document.getElementById('closeDonateModal').addEventListener('click', closeDonate);
+    document.getElementById('modalOkay').addEventListener('click', closeDonate);
+    donateModal.addEventListener('click', e => { if (e.target === donateModal) closeDonate(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDonate(); });
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
