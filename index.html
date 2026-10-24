@@ -254,6 +254,25 @@
     @media(max-width:760px){.nav-actions{gap:6px}.utility-btn{padding:7px 9px;font-size:13px}.nav-actions .btn{display:none}.donate-grid{grid-template-columns:1fr}.donate-section{padding:58px 0}.donate-card{padding:23px}}
 
   </style>
+
+  <style>
+    /* Visitor, clock and map dashboard */
+    .live-info-section{padding:64px 0;background:linear-gradient(180deg,#f0fbf5 0%,#fff 100%)}
+    .live-info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+    .live-info-card{background:#fff;border:1px solid #dceee4;border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(14,90,57,.08);min-width:0}
+    .live-info-card h3{margin:0 0 8px;font-size:20px;color:#145c3a}
+    .live-info-card p{color:#64756b;line-height:1.7;margin:0}
+    .live-number{font-size:clamp(30px,4vw,42px);font-weight:800;color:#087443;letter-spacing:-1px;margin:12px 0 4px}
+    .live-label{font-size:13px;color:#718078}
+    .live-clock{font-size:clamp(27px,4vw,38px);font-weight:800;color:#087443;font-variant-numeric:tabular-nums;margin:12px 0 2px}
+    .live-date{font-weight:600;color:#344b3e;margin-bottom:8px}
+    .map-frame{width:100%;height:300px;border:0;border-radius:16px;margin-top:16px;background:#eaf4ee}
+    .live-status{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#527161;margin-top:10px}
+    .live-status:before{content:'';width:8px;height:8px;border-radius:50%;background:#19a463;display:inline-block}
+    @media(max-width:850px){.live-info-grid{grid-template-columns:1fr 1fr}.live-info-card.map-card{grid-column:1/-1}}
+    @media(max-width:560px){.live-info-section{padding:42px 0}.live-info-grid{grid-template-columns:1fr}.live-info-card.map-card{grid-column:auto}.live-info-card{padding:20px}.map-frame{height:260px}}
+  </style>
+
 </head>
 <body>
   <div class="topbar">
@@ -415,6 +434,41 @@
         </div>
       </div>
     </section>
+  
+    <section class="live-info-section" id="live-info">
+      <div class="container">
+        <div class="section-heading" style="text-align:center;max-width:760px;margin:0 auto;">
+          <div class="eyebrow" style="justify-content:center;"><span class="eyebrow-dot"></span> এক নজরে নবীগঞ্জ</div>
+          <h2>আমাদের ওয়েবসাইট ও নবীগঞ্জ</h2>
+          <p>সময়, দর্শনার্থীর পরিসংখ্যান এবং এলাকার মানচিত্র—এক জায়গায়।</p>
+        </div>
+        <div class="live-info-grid">
+          <article class="live-info-card">
+            <h3>👥 ওয়েবসাইট ভিজিটর</h3>
+            <p>ওয়েবসাইটে প্রবেশের পরিসংখ্যান</p>
+            <div class="live-number" id="visitorCount">লোড হচ্ছে…</div>
+            <div class="live-label">সর্বমোট ভিজিট (কাউন্টার সার্ভিসের তথ্য)</div>
+            <div class="live-status" id="visitorStatus">কাউন্টার সংযোগের চেষ্টা চলছে</div>
+            <p style="font-size:12px;margin-top:12px;">নোট: এটি ভিজিট গণনা করে, আলাদা মানুষের সংখ্যা নয়। একই ব্যক্তি একাধিকবার ভিজিট করলে একাধিকবার গণনা হতে পারে।</p>
+          </article>
+          <article class="live-info-card">
+            <h3>🕒 বাংলাদেশ সময়</h3>
+            <p>নবীগঞ্জের স্থানীয় সময় ও তারিখ</p>
+            <div class="live-clock" id="bdClock">--:--:--</div>
+            <div class="live-date" id="bdDate">তারিখ লোড হচ্ছে…</div>
+            <p id="bdBanglaDate">বাংলা তারিখ প্রস্তুত হচ্ছে…</p>
+            <div class="live-status">প্রতি সেকেন্ডে আপডেট হয়</div>
+          </article>
+          <article class="live-info-card map-card">
+            <h3>📍 নবীগঞ্জের মানচিত্র</h3>
+            <p>হবিগঞ্জ, সিলেট বিভাগ, বাংলাদেশ</p>
+            <iframe class="map-frame" title="নবীগঞ্জ উপজেলার মানচিত্র" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=91.45%2C24.45%2C91.72%2C24.67&layer=mapnik&marker=24.557%2C91.596"></iframe>
+            <a class="btn btn-outline" style="display:inline-flex;margin-top:12px;" href="https://www.openstreetmap.org/?mlat=24.557&mlon=91.596#map=12/24.557/91.596" target="_blank" rel="noopener noreferrer">বড় ম্যাপে দেখুন ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -516,6 +570,39 @@
     document.getElementById('modalOkay').addEventListener('click', closeDonate);
     donateModal.addEventListener('click', e => { if (e.target === donateModal) closeDonate(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDonate(); });
+
+
+    // Bangladesh live clock and date
+    function updateBangladeshClock(){
+      const now = new Date();
+      const timeOptions = {timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true};
+      const dateOptions = {timeZone:'Asia/Dhaka',weekday:'long',year:'numeric',month:'long',day:'numeric'};
+      const banglaOptions = {timeZone:'Asia/Dhaka',calendar:'bengali',year:'numeric',month:'long',day:'numeric'};
+      document.getElementById('bdClock').textContent = new Intl.DateTimeFormat('bn-BD',timeOptions).format(now);
+      document.getElementById('bdDate').textContent = new Intl.DateTimeFormat('bn-BD',dateOptions).format(now);
+      document.getElementById('bdBanglaDate').textContent = 'বাংলা তারিখ: ' + new Intl.DateTimeFormat('bn-BD',banglaOptions).format(now);
+    }
+    updateBangladeshClock();
+    setInterval(updateBangladeshClock,1000);
+
+    // Shared public counter. If the service is unavailable, do not show a fake total.
+    (async function loadVisitorCounter(){
+      const number = document.getElementById('visitorCount');
+      const status = document.getElementById('visitorStatus');
+      try {
+        const response = await fetch('https://api.counterapi.dev/v1/ektakay-nabiganj-site/visits/up', {cache:'no-store'});
+        if (!response.ok) throw new Error('Counter service unavailable');
+        const data = await response.json();
+        const count = data.count ?? data.value ?? data.data?.count;
+        if (typeof count !== 'number') throw new Error('Counter response invalid');
+        number.textContent = new Intl.NumberFormat('bn-BD').format(count);
+        status.textContent = 'কাউন্টার সার্ভিস সংযুক্ত';
+      } catch (error) {
+        number.textContent = '—';
+        status.textContent = 'কাউন্টার এখন সংযুক্ত নয়';
+        number.title = 'নির্ভরযোগ্য মোট ভিজিট দেখাতে একটি সক্রিয় কাউন্টার সার্ভিস প্রয়োজন।';
+      }
+    })();
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
