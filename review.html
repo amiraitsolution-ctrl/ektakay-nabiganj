@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>একটাকায় নবীগঞ্জ — কমিটি পর্যালোচনা</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;max-width:680px;margin:32px auto;padding:20px;line-height:1.65;color:#172033;background:#f5f8f6}main{background:#fff;padding:24px;border-radius:16px;box-shadow:0 5px 24px #17203312}h1{color:#176b45;font-size:1.6rem}button{padding:12px 18px;background:#176b45;color:white;border:0;border-radius:8px;font-size:16px;cursor:pointer}button:disabled{opacity:.6}textarea{box-sizing:border-box;width:100%;min-height:100px;padding:10px;border:1px solid #cbd5d1;border-radius:8px;font:inherit}#msg{white-space:pre-wrap;padding:10px 0}</style>
+</head><body><main>
+<h1>একটাকায় নবীগঞ্জ</h1><h2 id="heading">স্বেচ্ছাসেবক আবেদন পর্যালোচনা</h2>
+<p id="explain">কমিটির সিদ্ধান্ত নিশ্চিত করতে নিচের বোতাম চাপুন। এই পেজ খুললেই আবেদন অনুমোদিত বা প্রত্যাখ্যাত হবে না।</p>
+<label for="note">কমিটির মন্তব্য (ঐচ্ছিক)</label><textarea id="note" maxlength="1000" placeholder="মন্তব্য লিখুন…"></textarea>
+<p><button id="go">সিদ্ধান্ত নিশ্চিত করুন</button></p><p id="msg" role="status" aria-live="polite"></p>
+</main><script>
+(() => {
+ const ENDPOINT="https://jvxvhktfeiqmhbdncbdy.supabase.co/functions/v1/volunteer-workflow";
+ const params=new URLSearchParams(location.search),token=params.get("token")||"",decision=params.get("decision")||"";
+ const valid=/^[a-f0-9]{64}$/.test(token)&&["approve","reject"].includes(decision);
+ const heading=document.getElementById("heading"),explain=document.getElementById("explain"),button=document.getElementById("go"),msg=document.getElementById("msg");
+ if(decision==="approve"){heading.textContent="স্বেচ্ছাসেবক আবেদন অনুমোদন";button.textContent="নিশ্চিত করে অনুমোদন করুন";}else if(decision==="reject"){heading.textContent="স্বেচ্ছাসেবক আবেদন প্রত্যাখ্যান";button.textContent="নিশ্চিত করে প্রত্যাখ্যান করুন";}
+ if(!valid){button.disabled=true;explain.textContent="লিংকটি অসম্পূর্ণ বা ভুল। কমিটির ইমেইলে পাওয়া সম্পূর্ণ লিংকটি খুলুন।";msg.textContent="সিদ্ধান্ত নেওয়া হয়নি।";return;}
+ button.addEventListener("click",async()=>{button.disabled=true;msg.textContent="প্রক্রিয়া চলছে…";try{const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"review",token,decision,committee_note:document.getElementById("note").value})});const raw=await response.text();let data={};try{data=raw?JSON.parse(raw):{};}catch{data={error:"সার্ভার থেকে সঠিক উত্তর পাওয়া যায়নি।"};}msg.textContent=data.message||data.error||(response.ok?"অনুরোধ সম্পন্ন হয়েছে।":"অনুরোধ সম্পন্ন হয়নি।");if(response.ok){button.textContent="সিদ্ধান্ত সম্পন্ন";}else{button.disabled=false;}}catch(e){msg.textContent="ইন্টারনেট বা সার্ভারের সঙ্গে সংযোগ হয়নি। পরে আবার চেষ্টা করুন।";button.disabled=false;}});
+})();
+</script></body></html>
